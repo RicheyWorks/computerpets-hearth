@@ -1,36 +1,44 @@
 # Hearth
 
-**Pet Village Builder** — Isometric homeland where off-duty pets build, nap, and receive visitors.
+**Pet Village Builder** — A planned village builder where off-duty pets settle into habitats and welcome visitors.
 
 Part of [ComputerPets](https://github.com/RicheyWorks/computerpets). Map: [computerpets-ecosystem](https://github.com/RicheyWorks/computerpets-ecosystem).
 
-| | |
+[Status](#status) · [Design](docs/DESIGN.md) · [Contributor start](#contributor-start) · [Ecosystem](https://github.com/RicheyWorks/computerpets-ecosystem)
+
+| Project | At a glance |
 | --- | --- |
-| Status | Design scaffold — loop and engine frozen |
+| Status | Design scaffold; not runnable yet |
 | License | MIT |
 | Tokens | Minigames never mint or burn. Tired overlay, not a dead lineage. |
-| First pet | [Meet Rui first](https://github.com/RicheyWorks/computerpets/blob/main/docs/START-HERE.md). This game is optional. |
+| First pet | [Flagship start guide](https://github.com/RicheyWorks/computerpets/blob/main/docs/START-HERE.md) |
 
-## The loop
+## Status
+
+This repository contains a [design](docs/DESIGN.md) and a [source placeholder](src/index.ts). It has no runnable application, build manifest, automated tests, or CI workflow.
+
+The experience, interfaces, integrations, and safeguards below are **implementation plans**, not supported features. The first implementation slice defines the initial contribution target.
+
+## Planned experience
 
 When a pet is not on the desktop, it is in Hearth. Buildings are habitats from Lore. A reef house will not accept Rui as a resident.
 
-## Who plays
+## Intended audience
 
 Pets not on the desktop. They live here until recalled.
 
-## What it is not
+## Out of scope
 
 Not a 4X. Reef house will not take Rui as a resident.
 
-## Genre and engine
+## Planned genre and engine
 
 - Genre: **Isometric management**
 - Engine: **Phaser.js**
 - Stack: TypeScript · Phaser 3 isometric · off-duty pets as villagers · Visitation as visitors
-- Default surface: `8080`
+- Proposed surface: `8080`
 
-## Architecture
+## Proposed integration
 
 ```mermaid
 flowchart LR
@@ -39,42 +47,42 @@ flowchart LR
   inn -.-> hearth
 ```
 
-## How you play
+## Proposed play loop
 
 1. Assign idle pets to plots.
 2. Build biome-legal structures.
 3. Visitors from Visitation walk through.
 4. Desktop recall yanks a villager back to overlay.
 
-## First slice
+## First implementation slice
 
-Build this and stop.
+Initial implementation target:
 
 **One forest plot, Rui idle villager, recall yanks him back to overlay.**
 
-You know it works when: Recall pauses the job. Illegal biome: ghost plot. Save local + cloud.
+Acceptance targets: Recall pauses the job. Illegal biome: ghost plot. Save local + cloud.
 
-## Environment
+## Planned environment
 
 Node 22
 
-## Failure doctrine
+## Planned safeguards
 
 Recall during build → job pauses, not lost. Illegal biome assign → ghost plot, no crash. Save is cloud + local.
 
-Canon rules that never yield:
+Design constraints:
 
 - 210 living kinds. No illegal hybrids.
 - Overlay pets can get tired, sick, or hide. Tokens are not burned by a minigame.
 - Desktop walk stays the main quest. Closing Hearth must leave Rui walking.
 
-## Neighbors
+## Related projects
 
-- computerpets-visitation
-- computerpets-lore
-- computerpets-acre
-- computerpets-inn
-- computerpets-companion
+- [computerpets-visitation](https://github.com/RicheyWorks/computerpets-visitation)
+- [computerpets-lore](https://github.com/RicheyWorks/computerpets-lore)
+- [computerpets-acre](https://github.com/RicheyWorks/computerpets-acre)
+- [computerpets-inn](https://github.com/RicheyWorks/computerpets-inn)
+- [computerpets-companion](https://github.com/RicheyWorks/computerpets-companion)
 
 ## Layout
 
@@ -86,13 +94,18 @@ computerpets-hearth/
   src/                implementation lands here
 ```
 
-## Run (Windows)
+## Contributor start
+
+With Git and PowerShell, clone the scaffold and read its design and source marker:
 
 ```powershell
-cd app; npm install; npm run dev
+git clone https://github.com/RicheyWorks/computerpets-hearth.git
+Set-Location computerpets-hearth
+Get-Content .\docs\DESIGN.md
+Get-Content .\src\index.ts
 ```
 
-Meet Rui first via the [flagship start-here](https://github.com/RicheyWorks/computerpets/blob/main/docs/START-HERE.md). This game is optional.
+Start with the [first implementation slice](#first-implementation-slice). Add the minimum project setup and tests needed for that slice, then document verified run commands. The proposed stack above is a design choice; there is no install or launch command for this checkout yet.
 
 ## Links
 
